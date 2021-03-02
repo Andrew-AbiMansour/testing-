@@ -1,20 +1,16 @@
-name: CI
-
+name: MasterCI
 on:
-  # GitHub has started calling new repo's first branch "main" https://github.com/github/renaming
-  # Existing codes likely still have "master" as the primary branch
-  # Both are tracked here to keep legacy and new codes working
   push:
     branches:
-      - "main"
-      - "dev"
-  pull_request:
-    branches:
-      - "main"
-      - "dev"
+      - master
 jobs:
-  linux:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - run: sudo apt-get install gfortran
-      - run: gfortran --version
+    - uses: actions/checkout@v1
+    - name: Run a one-line script
+      run: echo Hello, world!
+    - name: Run a multi-line script
+      run: |
+        echo Add other actions to build,
+        echo test, and deploy your project.
